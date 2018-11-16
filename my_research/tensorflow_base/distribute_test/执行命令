@@ -1,0 +1,21 @@
+ps 节点执行：
+
+python distributed.py --job_name=ps --task_index=0
+
+worker1 节点执行：（work的主节点，先执行,顺序不能错，按照config的顺序）
+
+python distributed.py --job_name=worker --task_index=0
+
+worker2 节点执行：
+
+python distributed.py --job_name=worker --task_index=1
+
+====================
+pc-01$ python distributed_mnsit.py --job_name="ps" --task_index=0
+pc-02$ python distributed_mnsit.py --job_name="worker" --task_index=0
+pc-03$ python distributed_mnsit.py --job_name="worker" --task_index=1
+pc-04$ python distributed_mnsit.py --job_name="worker" --task_index=2
+
+python keras_test2.py --job_name="ps" --task_index=0
+python keras_test2.py --job_name="worker" --task_index=0
+python keras_test2.py --job_name="worker" --task_index=1
